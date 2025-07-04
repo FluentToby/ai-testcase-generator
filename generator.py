@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def generate_test_cases(user_input: str, contect: str) -> str:
+def generate_test_cases(user_input: str, context: str) -> str:
     prompt = f"""
     You are a QA engineer. {context}
     
