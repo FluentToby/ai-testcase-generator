@@ -25,3 +25,18 @@ if st.button("Generate Test Cases!"):
         with st.spinner("Generating test cases..."):
             input_type = detect_input_type(user_input)
             
+
+#customize prompt depending on graphql or user story
+if input_type == "graphql":
+    context = "This is a GraphQL mutation or query. Generate test cases for API validation, edge cases, and response handling"
+else:
+    context = "This is a user story or requirement. Generate relevant functional test cases."
+    
+#amend context depending on text depth
+if test_depth == "Detailed":
+    context += " Include validations, boundary values and some exploratory cases."
+elif test_depth == "Edge-heavy":
+    context += " Focus on rare edge cases, invalid data, and unexpected inputs."
+    
+output = generate_test_cases(user_input, context)
+
