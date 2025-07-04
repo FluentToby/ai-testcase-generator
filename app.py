@@ -4,7 +4,18 @@ import hashlib
 import pandas as pd
 
 st.set_page_config(page_title="AI Test Case Generator", layout="centered")
-st.title("🧪 MyFluent AI AC and Test Case Generator", width=1000)
+st.markdown(
+    """
+    <div style="position: relative; left: -80px;">
+        <h1 style='white-space: nowrap;'>
+            🧪 MyFluent AI AC and Test Case Generator
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
 
 def is_product_owner_mode():
     return test_depth == "Product-Owner"
@@ -19,7 +30,7 @@ def detect_input_type(text: str) -> str:
         return "unknown"
 
 # UI components
-test_depth = st.selectbox("Select test depth", ["Simple", "Detailed", "Edge-heavy", "Product-Owner"])
+test_depth = st.selectbox("Select a test depth for test cases, or product-owner for AC's", ["Simple", "Detailed", "Edge-heavy", "Product-Owner"])
 user_input = st.text_area("Paste a user story, ticket description or GraphQL mutation", height=200)
 
 # Generate test cases
